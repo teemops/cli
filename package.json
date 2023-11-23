@@ -1,0 +1,26 @@
+{
+  "name": "teemops",
+  "version": "0.0.1",
+  "description": "Teemops CLI used for interacting with the Teemops API",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "build-watch": "npx tsc -w",
+    "dev": "npx ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "conf": "^12.0.0",
+    "figlet": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.4",
+    "typescript": "^5.3.2"
+  }
+}
