@@ -1,39 +1,48 @@
-import { Command, Option } from 'commander';
 import axios from 'axios';
-import { yellow, red, green } from '../utils/colors';
-const apiCommand = new Command();
+import config from '../config';
+import apiRequest from '../types/apiRequest';
+import { run } from 'node:test';
 
-apiCommand
-    .name('templates')
-    .description('View availabe templates')
-    // .option('-t, --task <task>', 'Task to add')
-    // .option('-p, --priority <priority>', 'Priority level of task')
-    .action(async (options) => {
-        console.log('Getting templates');
-        try {
-            const templates = await getTemplates();
-            console.table(templates);
-        } catch (e) {
-            console.log(yellow('Error getting templates'));
-            console.log(red(e));
-        }
-    });
-
-async function getTemplates() {
+/**
+ * Run a request
+ * 
+ * @param request 
+ * @param id 
+ * @returns 
+ */
+async function runRequest(request: apiRequest, id?: string): Promise<any> {
+    console.log(`${request.method} ${request.path}`);
+    var result = {} as any;
     try {
-        const result = await axios.get('https://api.tcg.app.teemops.com/templates');
+        switch (request.method) {
+            case 'GET':
 
-        // const detailedTemplates = templates.data.templates.map(async (template: any) => {
-        //     return {
+                result = await axios.get(`${config.api_endpoint}${request.path}`);
 
-        //     }
-        // })
-        return result.data.templates;
+                break;
+            case 'POST':
+
+                result = await axios.post(`${config.api_endpoint}${request.path}`, request.fields);
+
+                break;
+            case 'PUT':
+
+                result = await axios.put(`${config.api_endpoint}${request.path}`, request.fields);
+
+                break;
+            case 'DELETE':
+
+                result = await axios.delete(`${config.api_endpoint}${request.path}${id}`);
+
+                break;
+            default:
+                break;
+        }
+        return result.data;
     } catch (e) {
         throw e;
     }
-
 }
 
 
-export default apiCommand;
+export default runRequest;

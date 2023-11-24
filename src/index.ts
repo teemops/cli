@@ -2,19 +2,12 @@
 
 import { Command } from 'commander';
 import config from './config';
+import apiRequest from './types/apiRequest';
 import run from './actions/run';
 import actions from './actions/index';
 import { yellow, red, green, blue, lightBlue, cyan, magenta, orange } from './utils/colors';
 
 const program = new Command();
-
-interface apiRequest {
-    name: string,
-    path: string,
-    method: string,
-    fields?: Array<any>
-}
-
 
 async function main() {
     program
