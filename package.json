@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Teemops CLI used for interacting with the Teemops API",
   "main": "dist/index.js",
+  "bin": {
+    "teemops": "./dist/index.js"
+  },
   "scripts": {
     "build": "npx tsc",
     "build-watch": "npx tsc -w",
