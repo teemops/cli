@@ -9,12 +9,14 @@
       //"internalConsoleOptions": "neverOpen",
       "request": "launch",
       "name": "Debug CLI App",
-      "program": "${workspaceFolder}/dist/index.js",
+      // "program": "${workspaceFolder}/dist/index.js",
       "runtimeExecutable": "npm",
       "cwd": "${workspaceFolder}",
       "args": ["${input:optionArg}"],
       "runtimeArgs": ["run", "dev"],
-      "stopOnEntry": false
+      "sourceMaps": true,
+      // "stopOnEntry": false,
+      "envFile": "${workspaceFolder}/.env"
       // "watchMode": false
     },
     {

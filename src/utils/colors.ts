@@ -17,3 +17,24 @@ export function red(s: unknown) {
 export function gray(s: unknown) {
     return `\x1b[90m${s}\x1b[0m`;
 }
+
+export function cyan(s: unknown) {
+    return `\x1b[36m${s}\x1b[0m`;
+}
+
+export function magenta(s: unknown) {
+    return `\x1b[35m${s}\x1b[0m`;
+}
+
+export function lightBlue(s: unknown) {
+    return `\x1b[94m${s}\x1b[0m`;
+}
+
+export function lightGreen(s: unknown) {
+    return `\x1b[92m${s}\x1b[0m`;
+}
+
+//teemops orange from teemops.com
+export function orange(s: unknown) {
+    return `\x1b[38;5;208m${s}\x1b[0m`;
+}
