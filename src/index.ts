@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 import { Command } from 'commander';
-import config from './config';
+import settings from './settings';
 import apiRequest from './types/apiRequest';
 import run from './actions/run';
 import actions from './actions/index';
@@ -11,12 +11,15 @@ const program = new Command();
 
 async function main() {
     program
-        .version(magenta(config.version))
-        .description(lightBlue(config.description))
+        .version(magenta(settings.version))
+        .description(lightBlue(settings.description))
         .option('-v, --version', magenta('output the current version'))
         .option('-h, --help', yellow('output usage information'))
         // .action(run);
+        .addCommand(await actions['install']())
+        .addCommand(await actions['init']())
         .addCommand(await actions['users']())
+        
     // .addCommand(await anyCommand())
 
     await program.parseAsync(process.argv);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from '../config';
+import config from '../settings';
 import apiRequest from '../types/apiRequest';
 import { run } from 'node:test';
 

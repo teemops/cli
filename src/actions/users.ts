@@ -4,8 +4,7 @@ import { prompt } from 'enquirer';
 import { yellow, red, green, blue, lightBlue, cyan, magenta, orange } from './../utils/colors';
 import api from './api';
 import apiRequest from '../types/apiRequest';
-const config = require('./../config');
-
+const config = require('../lib/config');
 
 async function users(filter = 'users') {
 
