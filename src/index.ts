@@ -1,50 +1,25 @@
 #! /usr/bin/env node
 
 import { Command } from 'commander';
-import config from './config';
-import { yellow, red, green } from './utils/colors';
-import apiCommand from './actions/api';
-import anyCommand from './actions/any';
+import settings from './settings';
+import apiRequest from './types/apiRequest';
+import run from './actions/run';
+import actions from './actions/index';
+import { yellow, red, green, blue, lightBlue, cyan, magenta, orange } from './utils/colors';
+
 const program = new Command();
-
-async function run() {
-    const anyCommand = new Command()
-    var postman = await require('./reference/Teemops.postman_collection.json');
-
-    anyCommand
-        .name('any')
-        .description('Query any teemops dataset')
-    // .option('-t, --task <task>', 'Task to add')
-    // .option('-p, --priority <priority>', 'Priority level of task')
-    // .action(async (options) => {
-    //     console.log(yellow(postman.info._postman_id));
-    //     //console.log(yellow(JSON.stringify(postman.item)));
-    // });
-    var paths = [] as Array<any>;
-    postman.item.forEach(async (item: any) => {
-        const path = item.request.url.path[0];
-        if (paths.indexOf(path) === -1) {
-            paths.push(path);
-            anyCommand.addCommand(new Command(path)
-                .description('Query ' + path)
-                .action(async (options) => {
-                    console.log(yellow(path));
-                })
-            )
-        }
-    });
-
-    return anyCommand;
-}
 
 async function main() {
     program
-        .version(config.version)
-        .description(config.description)
-        .option('-v, --version', 'output the current version')
-        .option('-h, --help', 'output usage information')
+        .version(magenta(settings.version))
+        .description(lightBlue(settings.description))
+        .option('-v, --version', magenta('output the current version'))
+        .option('-h, --help', yellow('output usage information'))
         // .action(run);
-        .addCommand(await run())
+        .addCommand(await actions['install']())
+        .addCommand(await actions['init']())
+        .addCommand(await actions['users']())
+        
     // .addCommand(await anyCommand())
 
     await program.parseAsync(process.argv);

@@ -17,17 +17,44 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}api/users/check/family@rtout.com",
+					"raw": "{{url}}api/users/check/{{email}}",
 					"host": [
 						"{{url}}api"
 					],
 					"path": [
 						"users",
 						"check",
-						"family@rtout.com"
+						"{{email}}"
 					]
 				},
 				"description": "Checks if a username already exists."
+			},
+			"response": []
+		},
+		{
+			"name": "User Register V2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"email\": \"{{test_user}}\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}api/users",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "Registers a user with email and sends a confirmation code to email."
 			},
 			"response": []
 		},
@@ -56,60 +83,6 @@
 					]
 				},
 				"description": "Checks if a username already exists."
-			},
-			"response": []
-		},
-		{
-			"name": "User - Register",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n \"username\":\"{{test_user}}\",\n \"password\":\"{{password}}\",\n \"first\": \"Bob\",\n \"last\": \"Smith\",\n \"email\": \"{{email}}\"\n}"
-				},
-				"url": {
-					"raw": "{{url}}api/users",
-					"host": [
-						"{{url}}api"
-					],
-					"path": [
-						"users"
-					]
-				},
-				"description": "Registers a user with email and sends a confirmation code to email."
-			},
-			"response": []
-		},
-		{
-			"name": "User - Register V2",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n \"email\": \"{{test_user}}\"\n}"
-				},
-				"url": {
-					"raw": "{{url}}api/users",
-					"host": [
-						"{{url}}api"
-					],
-					"path": [
-						"users"
-					]
-				},
-				"description": "Registers a user with email and sends a confirmation code to email."
 			},
 			"response": []
 		},
