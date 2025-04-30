@@ -1,5 +1,9 @@
 # Teemops CLI
 
+Teemoosps CLI is a command line interface that integrates with the TeemOps API. It allows you to perform various operations such as registering users, installations, and managing your TeemOps account.
+
+The goal of this CLI is to provide a simple and efficient way to interact with the TeemOps API from the command line.
+
 ## Installation
 
 ```bash
